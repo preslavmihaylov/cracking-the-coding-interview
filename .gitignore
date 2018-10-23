@@ -2,3 +2,4 @@ bin/
 obj/
 *.out
 *.o
+compile_commands.json
