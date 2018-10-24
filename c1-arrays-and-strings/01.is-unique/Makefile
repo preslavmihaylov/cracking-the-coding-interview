@@ -20,7 +20,7 @@ target: build $(BIN_TARGET)
 rebuild: clean all
 
 test:
-	./tests/test-io.sh $(BIN_TARGET)
+	./tests/tests-io.sh $(BIN_TARGET)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
