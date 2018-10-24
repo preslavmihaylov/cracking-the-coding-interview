@@ -3,3 +3,4 @@ obj/
 *.out
 *.o
 compile_commands.json
+*.swp
