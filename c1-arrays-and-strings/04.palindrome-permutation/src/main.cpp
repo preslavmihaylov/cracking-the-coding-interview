@@ -4,46 +4,25 @@ using namespace std;
 
 #define ASCII_CHARS_COUNT 256
 
+void toggleBit(int *bitVector, int pos)
+{
+    *bitVector ^= (1 << pos);
+}
+
 bool isPalindromePerm(string str)
 {
-    char letters[ASCII_CHARS_COUNT] = { 0 };
-    int trueLength = str.size();
-
-    for (int i = 0; i < str.size(); i++)
-    {
-        if (str[i] == ' ')
-        {
-            trueLength--;
-            continue;
-        }
-
-        letters[str[i]]++;
-    }
-
-    int allowedOdds = 0;
-    if (trueLength % 2 == 1)
-    {
-        allowedOdds = 1;
-    }
-    
-    int oddsCnt = 0;
+    int bitVector = 0;
     for (int i = 0; i < str.size(); i++)
     {
         if (str[i] == ' ') continue;
-
-        if (letters[str[i]] % 2 == 1)
-        {
-            letters[str[i]] = 0;
-            oddsCnt++;
-        }
-
-        if (oddsCnt > allowedOdds)
-        {
-            return false;
-        }
+        
+        toggleBit(&bitVector, (int)(str[i] - 'a'));
     }
 
-    return true;
+    // this second part is magic:
+    // 00100 - 1 = 00011. AND-ing them will result to 0.
+    // If there is more than one bit, the result will be different from 0
+    return bitVector == 0 || (bitVector & (bitVector - 1)) == 0;
 }
 
 int main()
