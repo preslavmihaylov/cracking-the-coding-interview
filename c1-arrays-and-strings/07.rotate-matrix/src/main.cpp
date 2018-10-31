@@ -49,8 +49,6 @@ void rotateMatrix(int matrix[ROWS_MAX][COLS_MAX], int rows, int cols)
             }
         }
     }
-
-    printMatrix(matrix, rows, cols);
 }
 
 void readMatrix(int matrix[ROWS_MAX][COLS_MAX], int rows, int cols)
@@ -73,5 +71,6 @@ int main()
 
     readMatrix(matrix, N, N);
     rotateMatrix(matrix, N, N);
+    printMatrix(matrix, N, N);
 }
 
