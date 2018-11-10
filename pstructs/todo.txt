@@ -1,7 +1,9 @@
 TODO:
-1. make building all sources
-2. make extracting bin file from sources
-3. make building individual sources
+* passing cflags from root makefile
+* public headers in include dir
+* scalability when adding new projects
+* unit tests
+
 
 include/ --> public headers
 bin/ --> exe file
