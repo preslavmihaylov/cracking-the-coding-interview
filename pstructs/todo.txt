@@ -1,0 +1,33 @@
+TODO:
+1. make building all sources
+2. make extracting bin file from sources
+3. make building individual sources
+
+include/ --> public headers
+bin/ --> exe file
+lib/ --> external libraries
+include/ --> public headers
+src/
+  '
+  ' project1/
+      '
+      ' Makefile --> target/clean/test
+      '
+      ' project1.hpp
+      ' project1.cpp
+      ' project1.h
+      '
+      ' obj/
+      ' tests/
+  '
+  ' project2/
+      '
+      ' Makefile --> target/clean/test
+      '
+      ' project2.hpp
+      ' project2.cpp
+      ' project2.h
+      '
+      ' obj/
+      ' tests/
+      
