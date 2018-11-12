@@ -1,0 +1,37 @@
+OBJ_DIR=./obj
+BIN_DIR=./bin
+INC_DIR=../../include
+
+CC ?= g++
+INCLUDES ?= -I. -I$(INC_DIR)
+CFLAGS ?= -g -O2 -Wall -Wextra -Werror -Wno-unused-function \
+          -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG\
+          $(INCLUDES) $(OPTFLAGS)
+
+SOURCES=queue.cpp
+SLIB_TARGET=$(BIN_DIR)/queue.ar
+
+OBJECTS=$(addprefix $(OBJ_DIR)/, $(SOURCES:%.cpp=%.o))
+
+
+all: target
+
+target: build $(SLIB_TARGET)
+
+rebuild: clean all
+
+$(OBJ_DIR)/%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@ 
+
+$(SLIB_TARGET): $(OBJECTS)
+	ar rcs $@ $(OBJECTS)
+	ranlib $@
+
+build:
+	mkdir -p $(OBJ_DIR)
+	mkdir -p $(BIN_DIR)
+
+clean:
+	rm -rf $(OBJ_DIR) || true
+	rm -rf $(BIN_DIR) || true
+
