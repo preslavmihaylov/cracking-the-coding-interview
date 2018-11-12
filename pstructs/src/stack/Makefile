@@ -1,11 +1,12 @@
 OBJ_DIR=./obj
 BIN_DIR=./bin
+INC_DIR=../../include
 
-CC=g++
-INCLUDES=-I$(SRC_DIR) -I$(INC_DIR) -I.
-CFLAGS=-g -O2 -Wall -Wextra -Werror -Wno-unused-function \
-		  -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG\
-		  $(INCLUDES) $(OPTFLAGS)
+CC ?= g++
+INCLUDES ?= -I. -I$(INC_DIR)
+CFLAGS ?= -g -O2 -Wall -Wextra -Werror -Wno-unused-function \
+          -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG\
+          $(INCLUDES) $(OPTFLAGS)
 
 SOURCES=stack.cpp
 OBJECTS=$(addprefix $(OBJ_DIR)/, $(SOURCES:%.cpp=%.o))

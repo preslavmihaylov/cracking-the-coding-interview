@@ -1,15 +1,19 @@
 SRC_DIR=./src
 BIN_DIR=./bin
-INC_DIR=./include
+INC_DIR=$(abspath ./include)
 
 CC=g++
-INCLUDES=-I$(SRC_DIR) $(INC_DIR)
+INCLUDES=-I. -I$(INC_DIR)
 CFLAGS=-g -O2 -Wall -Wextra -Werror -Wno-unused-function \
-		  -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG\
-		  $(INCLUDES) $(OPTFLAGS)
+       -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG\
+       $(INCLUDES) $(OPTFLAGS)
 
-STACK_PRJ=$(SRC_DIR)/stack
-PROJECTS=$(STACK_PRJ) 
+export CC
+export CFLAGS
+export INCLUDES
+
+PROJECTS=$(SRC_DIR)/stack \
+         $(SRC_DIR)/queue
 
 DLIB_TARGET=$(BIN_DIR)/pstructs.so
 
@@ -28,9 +32,17 @@ build:
 clean: clean_src
 	rm $(DLIB_TARGET) || true
 
-
 target_src:
-	$(MAKE) -C $(STACK_PRJ) target
+	for i in $(PROJECTS); do \
+		$(MAKE) -C $$i target; \
+	done
 
 clean_src:
-	$(MAKE) -C $(STACK_PRJ) clean
+	for i in $(PROJECTS); do \
+		$(MAKE) -C $$i clean; \
+	done
+
+.PHONY: $(PROJECTS)
+
+$(PROJECTS):
+	$(MAKE) -C $@ target
