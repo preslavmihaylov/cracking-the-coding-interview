@@ -1,5 +1,0 @@
-  
-### Project plan: ###
-  [X] public headers in include dir
-  [X] scalability when adding new projects
-  [ ] unit tests
