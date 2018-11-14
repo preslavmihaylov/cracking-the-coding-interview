@@ -4,3 +4,4 @@ obj/
 *.o
 compile_commands.json
 *.swp
+*.exe
