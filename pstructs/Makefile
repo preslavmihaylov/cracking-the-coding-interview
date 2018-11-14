@@ -26,23 +26,32 @@ target: build
 
 rebuild: clean all
 
+tests: tests_run
+
 build:
 	mkdir -p $(BIN_DIR)
 
 clean: clean_src
 	rm $(DLIB_TARGET) || true
 
+tests_build:
+	@for i in $(PROJECTS); do \
+		$(MAKE) -C $$i test; \
+	done
+
+tests_run: tests_build
+	@for i in $(PROJECTS); do \
+		echo "TESTING $$i"; \
+		./$$i/tests/tests.exe; \
+	done
+
 target_src:
-	for i in $(PROJECTS); do \
+	@for i in $(PROJECTS); do \
 		$(MAKE) -C $$i target; \
 	done
 
 clean_src:
-	for i in $(PROJECTS); do \
+	@for i in $(PROJECTS); do \
 		$(MAKE) -C $$i clean; \
 	done
 
-.PHONY: $(PROJECTS)
-
-$(PROJECTS):
-	$(MAKE) -C $@ target
