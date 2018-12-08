@@ -1,0 +1,33 @@
+push 0 1
+push 0 2
+push 0 3
+push 0 4
+push 1 11
+push 1 12
+push 1 13
+push 1 14
+push 2 21
+push 2 22
+push 2 23
+push 2 24
+push 0 5
+push 0 6
+push 0 7
+push 0 8
+pop 1
+pop 1
+pop 1
+pop 1
+pop 2
+pop 2
+pop 2
+pop 2
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+exit

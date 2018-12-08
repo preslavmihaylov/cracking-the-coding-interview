@@ -1,0 +1,21 @@
+push 0 1
+push 0 2
+push 0 3
+push 0 4
+push 0 5
+push 0 6
+push 0 7
+push 0 8
+push 0 9
+push 0 10
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+pop 0
+exit
