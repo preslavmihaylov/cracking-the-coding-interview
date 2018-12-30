@@ -1,16 +1,15 @@
 #ifndef PSTRUCTS_QUEUE_H
 #define PSTRUCTS_QUEUE_H
 
-#include <stdexcept>
-#include <iostream>
-
-#define INIT_CAP 4
-
 namespace pstructs
 {
+    #include <stdexcept>
+    #include <iostream>
+
     template<class T>
     class queue
     {
+        static const int INIT_CAP = 4;
         T *data;
         int head;
         int tail;
