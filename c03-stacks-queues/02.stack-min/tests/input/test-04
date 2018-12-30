@@ -1,0 +1,13 @@
+push 10
+min
+
+push 9
+min
+
+push 8
+min
+
+push 7
+min
+
+exit

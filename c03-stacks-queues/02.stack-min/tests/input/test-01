@@ -1,0 +1,9 @@
+push 5
+min
+push 9
+min
+push 3
+min
+pop
+min
+exit
