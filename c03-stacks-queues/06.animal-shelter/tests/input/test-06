@@ -1,0 +1,7 @@
+enqueue dog aaa
+enqueue cat bbb
+enqueue dog ccc
+enqueue cat ddd
+dequeue cat
+dequeue cat
+exit

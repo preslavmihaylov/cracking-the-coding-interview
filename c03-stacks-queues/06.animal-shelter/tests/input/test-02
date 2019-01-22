@@ -1,0 +1,9 @@
+enqueue dog aaa
+enqueue dog bbb
+enqueue dog ccc
+enqueue dog ddd
+dequeue dog
+dequeue dog
+dequeue dog
+dequeue dog
+exit

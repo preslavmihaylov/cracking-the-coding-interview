@@ -1,0 +1,7 @@
+enqueue dog Rex
+enqueue cat Matsa
+enqueue dog Tina
+dequeue Cat
+dequeue Any
+dequeue Any
+exit
