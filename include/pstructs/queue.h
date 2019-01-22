@@ -1,11 +1,11 @@
 #ifndef PSTRUCTS_QUEUE_H
 #define PSTRUCTS_QUEUE_H
 
+#include <stdexcept>
+#include <iostream>
+
 namespace pstructs
 {
-    #include <stdexcept>
-    #include <iostream>
-
     template<class T>
     class queue
     {

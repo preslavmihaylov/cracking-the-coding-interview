@@ -1,10 +1,10 @@
 #ifndef PSTRUCTS_STACK_H
 #define PSTRUCTS_STACK_H
 
+#include <stdexcept>
+
 namespace pstructs
 {
-    #include <stdexcept>
-    
     template<class T>
     class stack
     {
