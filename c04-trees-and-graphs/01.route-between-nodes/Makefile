@@ -27,7 +27,7 @@ test:
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(BIN_TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 build:
 	mkdir -p $(BIN_DIR)
