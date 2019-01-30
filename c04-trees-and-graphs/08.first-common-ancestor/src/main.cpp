@@ -35,28 +35,44 @@ struct TreeNode
 
     shared_ptr<TreeNode> firstCommonAncestor(const shared_ptr<TreeNode>& other)
     {
-        shared_ptr<TreeNode> ancestor1 = this->parent;
-        while (ancestor1 != nullptr)
+        int myDepth = this->depth();
+        int otherDepth = other->depth();
+
+        shared_ptr<TreeNode> first = myDepth <= otherDepth ? make_shared<TreeNode>(*this) : other;
+        shared_ptr<TreeNode> second = myDepth <= otherDepth ? other : make_shared<TreeNode>(*this);
+        int firstDepth = myDepth <= otherDepth ? myDepth : otherDepth;
+        int secondDepth = myDepth <= otherDepth ? otherDepth : myDepth;
+       
+        while (secondDepth > firstDepth)
         {
-            shared_ptr<TreeNode> ancestor2 = other->parent;
-            shared_ptr<TreeNode> commonAncestor = nullptr;
-            while (ancestor2 != nullptr)
-            {
-                if (ancestor1->val == ancestor2->val)
-                {
-                    commonAncestor = ancestor1;
-                    break;
-                }
-
-                ancestor2 = ancestor2->parent;
-            }
-
-            if (commonAncestor) return commonAncestor;
-
-            ancestor1 = ancestor1->parent;
+            // if the depth is calculated correctly, we shouldn't encounter the root
+            assert(second->parent != nullptr);
+            second = second->parent;
+            secondDepth--;
         }
 
-        return nullptr;
+        while (first != nullptr && second != nullptr && first->val != second->val)
+        {
+            first = first->parent;
+            second = second->parent;
+        }
+
+        return (first == nullptr || second == nullptr) ? nullptr : first;
+    }
+
+    int depth()
+    {
+        if (this->parent == nullptr) return 0;
+
+        int depth = 0;
+        shared_ptr<TreeNode> parent = this->parent;
+        while (parent != nullptr)
+        {
+            parent = parent->parent;
+            depth++;
+        }
+
+        return depth;
     }
 
     void print(string indent)
