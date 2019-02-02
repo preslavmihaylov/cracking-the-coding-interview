@@ -24,6 +24,21 @@ namespace pstructs
             
             return cnt;
         }
+
+        static int clearBit(uint32_t num, uint8_t pos)
+        {
+            return num & ~(1 << pos);
+        }
+
+        static int raiseBit(uint32_t num, uint8_t pos)
+        {
+            return num | (1 << pos);
+        }
+
+        static int setBit(uint32_t num, uint8_t pos, bool bit)
+        {
+            return bit ? raiseBit(num, pos) : clearBit(num, pos);
+        }
     };
 }
 
