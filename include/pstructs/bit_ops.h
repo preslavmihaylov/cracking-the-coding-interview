@@ -46,6 +46,11 @@ namespace pstructs
         
         static uint32_t binaryStringToNumber(std::string&& input)
         {
+            return bit_ops::binaryStringToNumber(input);
+        }
+
+        static uint32_t binaryStringToNumber(std::string& input)
+        {
             uint32_t result = 0;
             for (uint32_t i = 0; i < input.size(); i++)
             {
