@@ -39,6 +39,11 @@ namespace pstructs
         {
             return bit ? raiseBit(num, pos) : clearBit(num, pos);
         }
+
+        static int getBit(uint32_t num, uint8_t pos)
+        {
+            return (num >> pos) & 1;
+        }
     };
 }
 
