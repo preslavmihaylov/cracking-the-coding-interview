@@ -43,6 +43,21 @@ namespace pstructs
         {
             return (num >> pos) & 1;
         }
+        
+        static uint32_t binaryStringToNumber(std::string&& input)
+        {
+            uint32_t result = 0;
+            for (uint32_t i = 0; i < input.size(); i++)
+            {
+                char ch = input[i];
+                if (!(ch >= '0' && ch <= '1')) throw std::invalid_argument("invalid binary string input");
+
+                result <<= 1;
+                result |= (ch - '0');
+            }
+
+            return result;
+        }
 
         static std::string toBinaryString(uint32_t num)
         {
