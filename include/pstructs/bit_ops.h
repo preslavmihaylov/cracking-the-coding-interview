@@ -2,9 +2,8 @@
 #define PSTRUCTS_BIT_OPS_H
 
 #include <iostream>
+#include <algorithm>
 #include <cstdint>
-
-using namespace std;
 
 namespace pstructs
 {
@@ -43,6 +42,21 @@ namespace pstructs
         static int getBit(uint32_t num, uint8_t pos)
         {
             return (num >> pos) & 1;
+        }
+
+        static std::string toBinaryString(uint32_t num)
+        {
+            std::ostringstream oss;
+            while (num != 0)
+            {
+                oss << bit_ops::getBit(num, 0);
+                num >>= 1;
+            }
+
+            std::string res = oss.str();
+            std::reverse(res.begin(), res.end());
+
+            return res;
         }
     };
 }
