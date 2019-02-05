@@ -66,6 +66,8 @@ namespace pstructs
 
         static std::string toBinaryString(uint32_t num)
         {
+            if (num == 0) return "0";
+
             std::ostringstream oss;
             while (num != 0)
             {
