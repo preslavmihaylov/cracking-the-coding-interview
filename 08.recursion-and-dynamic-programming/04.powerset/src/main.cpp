@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
+#include <pstructs/bit_ops.h>
 
 using namespace std;
 
 vector<int> readSet();
-void powerset(vector<int>&& set);
+void powerset_binary(vector<int>& set);
 void powerset(vector<int>& set);
 void genSubsets(vector<int>& set,
                 int startIndex,
@@ -24,7 +25,8 @@ static inline void rtrim(std::string &s)
 int main()
 {
     vector<int> set = readSet();
-    powerset(set);
+    //powerset(set);
+    powerset_binary(set);
 }
 
 vector<int> readSet()
@@ -48,9 +50,39 @@ vector<int> readSet()
     return set;
 }
 
-void powerset(vector<int>&& set)
+void powerset_binary(vector<int>& set)
 {
-    powerset(set);
+    int mask = 0;
+    vector<string> subsets;
+    while (mask < pow(2, set.size()))
+    {
+        string currentSubset = "";
+        for (uint32_t i = 0; i < set.size(); i++)
+        {
+            if (pstructs::bit_ops::getBit(mask, i) == 1)
+            {
+                currentSubset += std::to_string(set[i]);
+                currentSubset += " ";
+            }
+        }
+
+        rtrim(currentSubset);
+        subsets.push_back(currentSubset);
+        mask++;
+    }
+
+    std::sort(subsets.begin(), subsets.end(), 
+        [](const string& s1, const string& s2) -> bool
+        { 
+            if (s1.size() != s2.size()) return s2.size() > s1.size();
+            
+            return s2 > s1;
+        });
+
+    for (uint32_t i = 0; i < subsets.size(); i++)
+    {
+        cout << subsets[i] << endl;
+    }
 }
 
 void powerset(vector<int>& set)
