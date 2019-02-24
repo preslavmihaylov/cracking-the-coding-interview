@@ -12,7 +12,6 @@ int main()
     cout << rec_multiply(a, b) << endl;
 }
 
-
 int rec_multiply(int term1, int term2)
 {
     int bigger = term1 > term2 ? term1 : term2;
