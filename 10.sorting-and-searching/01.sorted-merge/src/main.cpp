@@ -55,23 +55,16 @@ void sortedMerge(vector<int>& a, vector<int>& b)
     int bRight = b.size() - 1;
     int nextElemIndex = a.size() - 1;
 
-    while (aRight >= 0 && bRight >= 0)
+    while (bRight >= 0)
     {
         if (a[aRight] > b[bRight])
         {
-            a[nextElemIndex] = a[aRight--];
+            a[nextElemIndex--] = a[aRight--];
         }
         else
         {
-            a[nextElemIndex] = b[bRight--];
+            a[nextElemIndex--] = b[bRight--];
         }
-
-        nextElemIndex--;
-    }
-
-    while (bRight >= 0)
-    {
-        a[nextElemIndex--] = b[bRight--];
     }
 }
 
