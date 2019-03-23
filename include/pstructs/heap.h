@@ -103,7 +103,7 @@ namespace pstructs
 
         int parentIndex(int index)
         {
-            int res = index - 1;
+            int res = index / 2;
             if (res <= 0) return NOT_FOUND;
 
             return res;
