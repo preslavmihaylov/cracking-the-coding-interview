@@ -1,0 +1,11 @@
+insert 25
+insert 35
+insert 30
+insert 40
+rank 30
+rank 40
+insert 29
+insert 10
+rank 30
+rank 40
+end

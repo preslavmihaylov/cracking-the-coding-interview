@@ -1,0 +1,11 @@
+insert 25
+insert 10
+insert 15
+rank 15
+rank 25
+insert 8
+insert 12
+rank 15
+rank 25
+end
+
